@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-10-06T17:12:23.477Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" etag="W3vj3Xa1j-qYjTN_TzW4" version="22.0.3" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-06T17:12:44.244Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" etag="FHJNa2tX9jaxIUnAXBDj" version="22.0.3" type="github">
   <diagram name="Page-1" id="E1WG4Elm6tf5TSE58CV2">
     <mxGraphModel dx="1026" dy="655" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -43,7 +43,7 @@
         <mxCell id="5ytcgciPrF8T2E_5U3Z--15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="5ytcgciPrF8T2E_5U3Z--12" target="5ytcgciPrF8T2E_5U3Z--14">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5ytcgciPrF8T2E_5U3Z--12" value="Analyze data for weekly winners." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="5ytcgciPrF8T2E_5U3Z--12" value="Analyze data for weekly winners." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="540" y="100" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="5ytcgciPrF8T2E_5U3Z--17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="5ytcgciPrF8T2E_5U3Z--14" target="5ytcgciPrF8T2E_5U3Z--16">
@@ -52,7 +52,7 @@
         <mxCell id="5ytcgciPrF8T2E_5U3Z--14" value="Keep track of rollover" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="540" y="260" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5ytcgciPrF8T2E_5U3Z--16" value="Email results to group" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="5ytcgciPrF8T2E_5U3Z--16" value="Email results to group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="540" y="390" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
