@@ -28,11 +28,11 @@ def get_data() -> list[dict]:
         specific_week_url = _WEEKLY_SCOREBOARD + str(week_count)
         get_result: Response = requests.get(url=specific_week_url)
         
-        # TODO: Create cache of failed get-requests, we can try again.
         # We want to fail immediately if a bad request occurs; the data is corrupted.
         if get_result.status_code != 200:
             raise RequestException(
                 f'The following get-request was unsuccessful: \n{specific_week_url}')
+        # TODO: Create cache of failed get-requests, we can try again.
         
         # Translate content to JSON dictionary.
         weekly_nfl_data.append(json.loads(get_result.content))
