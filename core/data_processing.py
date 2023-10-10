@@ -32,7 +32,7 @@ def get_data() -> list[dict]:
         if get_result.status_code != 200:
             raise RequestException(
                 f'The following get-request was unsuccessful: \n{specific_week_url}')
-        # TODO: Create cache of failed get-requests, we can try again.
+        # TODO [$6524c1c66067880007969d61]: Create cache of failed get-requests, we can try again.
         
         # Translate content to JSON dictionary.
         weekly_nfl_data.append(json.loads(get_result.content))

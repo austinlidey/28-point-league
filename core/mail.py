@@ -48,7 +48,7 @@ def _email_content_generation(subject: str, body: str) -> str:
     """
     return f"""Subject:{subject}\n\n{body}"""
 
-# TODO: Create HTML email template, then insert custom data.
+# TODO [$6524c1c66067880007969d62]: Create HTML email template, then insert custom data.
 def generate_email(weekly_winners: list) -> tuple[str,str]:
     """Generate subject and body components of email.
 

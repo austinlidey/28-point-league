@@ -54,11 +54,11 @@ def _assess_week_winners(week: int, week_winners: list, inactive_week: bool) -> 
     assert result != '', 'Result of weekly winners assessment was not set.'
     return result
 
-# TODO: Generate HTML email template, then insert data.
+# TODO [$6524c1c66067880007969d63]: Generate HTML email template, then insert data.
 def _generate_winners_str(winners: list) -> str:
     result = '\n'
-    # TODO: Add size of cash pot to email.
+    # TODO [$6524c1c66067880007969d64]: Add size of cash pot to email.
     for winner in winners:
-        # TODO: Add images of winning teams using `team.logo_url`.
+        # TODO [$6524c1c66067880007969d65]: Add images of winning teams using `team.logo_url`.
         result += '\t\t' + winner.name + '\n'
     return result
