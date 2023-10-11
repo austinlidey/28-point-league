@@ -10,10 +10,10 @@ if TYPE_CHECKING:
 
 _WIN_POINT_REQ: Final[int] = 28
 
-_NO_GAME_PLAYED = 'Week {}: TBD - Not yet played.'
-_NO_WINNERS = 'Week {}: ROLLOVER - No teams scored 28 points.'
+_NO_GAME_PLAYED = 'Week {}: TBD - Not yet played'
+_NO_WINNERS = 'Week {}: ROLLOVER - No teams scored 28 points'
 _DRAW = 'Week {}: ROLLOVER - The following teams scored 28 points {}'
-_WINNER = 'Week {}: WINNER - Winning team is {}.'
+_WINNER = 'Week {}: WINNER - Winning team is {}'
 
 NFL_TEAMS: dict[str, 'Team'] = {}
 WEEKLY_WINNERS: list[str] = []
@@ -21,7 +21,7 @@ WEEKLY_WINNERS: list[str] = []
 def team_is_not_initialized(name: str) -> bool:
     return NFL_TEAMS.get(name, None) is None
 
-def week_analysis() -> list:
+def week_analysis() -> list[str]:
 
     for week in range(0, 18):
         week_scores, week_winning_teams = [], []
@@ -33,7 +33,7 @@ def week_analysis() -> list:
         inactive_week = all(value == -1 or value == -2 for value in week_scores)
 
         WEEKLY_WINNERS.append(
-            _assess_week_winners(week, week_winning_teams, inactive_week)
+            _assess_week_winners(week + 1, week_winning_teams, inactive_week)
             )
     
     return WEEKLY_WINNERS
