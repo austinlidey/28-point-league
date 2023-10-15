@@ -1,1 +1,11 @@
+# Blacklisted Directories
+experimental/
+team_logos/
+formatting/
+
+# Blacklisted Files
+.DS_Store
+
+# Blacklisted File extensions
 *.pyc
+*.html
