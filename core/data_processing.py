@@ -1,3 +1,9 @@
+"""Module to facilitate data processing.
+
+COPYRIGHT: 
+    AuthorChaos / 2023
+"""
+
 import datetime
 import json
 import requests
@@ -10,6 +16,12 @@ _CURRENT_YEAR = str(datetime.date.today().year)
 _WEEKLY_SCOREBOARD: str = f'https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates={_CURRENT_YEAR}&seasontype=2&week='
 
 def populate_teams(regular_season_data: list[dict]) -> None:
+    """Facilitate initializing team data.
+
+    Args:
+        regular_season_data (list[dict]): 
+            Massive dictionary with current year season data.
+    """
     for week in regular_season_data:
         process_week_data(week)
         
@@ -34,7 +46,7 @@ def get_data() -> list[dict]:
                 f'The following get-request was unsuccessful: \n{specific_week_url}')
         # TODO [$6524c1c66067880007969d61]: Create cache of failed get-requests, we can try again.
         
-        # Translate content to JSON dictionary.
+        # Translate JSON content to dictionary.
         weekly_nfl_data.append(json.loads(get_result.content))
     
     assert len(weekly_nfl_data) == 18, f'18 weeks of data not present in {weekly_nfl_data}.'

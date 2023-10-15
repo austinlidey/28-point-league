@@ -1,4 +1,4 @@
-"""Module for NFL Teams.
+"""Module representing an NFL team.
 
 COPYRIGHT: 
     AuthorChaos / 2023
@@ -34,38 +34,57 @@ class Team():
 
 
 def process_week_data(week_data: list[dict]):
-    # Range of 12 to 16 games played in a given week.
+    """Facilitate initializing current week's data.
+
+    Args:
+        week_data (list[dict]): 
+            Massive dictionary of data/statistics for the given week.
+    """
     current_week: int = week_data['week']['number']
     _process_event_data(current_week, week_data['events'])
 
 
-def _process_event_data(week_count, event_data):
+def _process_event_data(week_count: int, event_data: list[dict]):
+    """Process event based data.
+
+    Args:
+        week_count (int): Current week number.
+        event_data (list[dict]): 
+            List of game statistic/data dictionaries.
+
+    Raises:
+        ValueError: Game status is not defined.
+    """
     for game in event_data:
-        # Init/update teams
-        game_status = game['status']['type']['name']
-        for team in game['competitions'][0]['competitors']:
-            cur_team: Team
+        # We expect two teams or 'competitors'.
+        for team in game['competitions'][0]['competitors']:            
+            # Grab the name/logo of the team.
             team_name = team['team']['name']
             team_logo = team['team']['logo']
-            # If the teams not init'd yet, do it first.
+            # If the team's not existing, init it.
             if team_is_not_initialized(team_name):
                 NFL_TEAMS[team_name] = Team(name=team_name,
                                             logo_url=team_logo)
-
-            # Populate data for the team now.
-            cur_team = NFL_TEAMS.get(team_name)
-            week_element = (week_count - 1)
-            if game_status == 'STATUS_FINAL':
-                cur_team.set_week_score(week_element, int(team['score']))
-            elif game_status == 'STATUS_SCHEDULED':
-                cur_team.set_week_score(week_element, _NOT_YET_PLAYED)
-            else:
-                raise ValueError(f'Status message: `{game_status}` is not defined.') 
             
-            # Calculate average after all weeks accounted for.
-            if week_count == 18:
-                _process_avg_score(cur_team)
-                _set_team_bye_weeks(cur_team)
+            # Grab the current team from our master list.
+            cur_team: Team = NFL_TEAMS.get(team_name)
+            # 0-based indexing.
+            week_element = (week_count - 1)
+            # Determine the status of the game; is it over, in progress, scheduled?
+            game_status = game['status']['type']['name']
+            match game_status:
+                case 'STATUS_FINAL':
+                    cur_team.set_week_score(week_element, int(team['score']))
+                case 'STATUS_IN_PROGRESS' | 'STATUS_SCHEDULED':
+                    cur_team.set_week_score(week_element, _NOT_YET_PLAYED)
+                case _:
+                    raise ValueError(f'Status message: `{game_status}` is not defined.') 
+
+    # Calculate average after all weeks accounted for.
+    if week_count == 18:
+        for team in NFL_TEAMS.values():
+            _process_avg_score(team)
+            _set_team_bye_weeks(team)
 
 
 def _process_avg_score(team: Team) -> None:
@@ -81,3 +100,4 @@ def _set_team_bye_weeks(team: Team) -> None:
     for idx, score in enumerate(team.scores_by_week):
         if score == _BYE_WEEK:
             team.bye_week_index = idx
+            break
